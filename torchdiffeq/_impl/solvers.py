@@ -99,6 +99,9 @@ class FixedGridODESolver(object):
         return tuple(map(torch.stack, tuple(zip(*solution))))
 
     def _linear_interp(self, t0, t1, y0, y1, t):
+        if y0 == y1:
+            print('error maybe')
+        
         if t == t0:
             return y0
         if t == t1:
